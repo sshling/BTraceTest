@@ -1,4 +1,4 @@
-package cn.shaolingweb.ch01;
+package cn.shaolingweb.ch01_btrace;
 
 import java.util.Random;
 

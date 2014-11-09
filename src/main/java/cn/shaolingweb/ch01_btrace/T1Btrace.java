@@ -1,4 +1,4 @@
-package cn.shaolingweb.ch01;
+package cn.shaolingweb.ch01_btrace;
 import static com.sun.btrace.BTraceUtils.println;  
 import static com.sun.btrace.BTraceUtils.str;  
 import static com.sun.btrace.BTraceUtils.strcat;  
@@ -18,20 +18,20 @@ public class T1Btrace {
 	@TLS
 	private static long startTime=0;
 	
-	@OnMethod(clazz="cn.shaolingweb.ch01.T1",method="execute")
+	@OnMethod(clazz="cn.shaolingweb.ch01_btrace.T1",method="execute")
 	public static void startMethod(){  
 	        startTime = timeMillis();  
 	        println("-------------------------------------------");  
 	}
 	
-	@OnMethod(clazz="cn.shaolingweb.ch01.T1",method="execute",location=@Location(Kind.RETURN))
+	@OnMethod(clazz="cn.shaolingweb.ch01_btrace.T1",method="execute",location=@Location(Kind.RETURN))
 	public static void endMethod(){  
 		println(strcat("the class method execute time=>", str(timeMillis()-startTime)));  
         println("-------------------------------------------");  
 	}
 	
 	
-	@OnMethod(clazz="cn.shaolingweb.ch01.T1",method="execute",location=@Location(Kind.RETURN))
+	@OnMethod(clazz="cn.shaolingweb.ch01_btrace.T1",method="execute",location=@Location(Kind.RETURN))
 	 public static void traceExecute(
 			 @ProbeClassName String name,
 			 @ProbeMethodName String method,
